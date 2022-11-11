@@ -10,6 +10,17 @@ import android.system.Os;
 import java.io.File;
 
 public class MainActivity extends ReactActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    try {
+      Os.setenv("EXTERNAL_STORAGE", getExternalFilesDir(null).getAbsolutePath(), true);
+      System.loadLibrary("indy");
+    } catch (ErrnoException e) {
+      e.printStackTrace();
+    }
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
