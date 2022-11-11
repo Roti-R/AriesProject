@@ -3,12 +3,14 @@ import {
   InitConfig,
   ConnectionEventTypes,
   ConnectionStateChangedEvent,
+  registerInboundTransport,
+  registerOutboundTransport,
   WsOutboundTransport,
   HttpOutboundTransport,
   DidExchangeState,
   OutOfBandRecord,
+  agentDependencies, HttpInboundTransport,
 } from '@aries-framework/core'
-import { agentDependencies, HttpInboundTransport } from '@aries-framework/node'
 
 const initializeBobAgent = async () => {
   // Simple agent configuration. This sets some basic fields like the wallet
@@ -22,6 +24,8 @@ const initializeBobAgent = async () => {
     },
     autoAcceptConnections: true,
   }
+
+  console.log("123")
 
   // A new instance of an agent is created here
   const agent = new Agent(config, agentDependencies)
